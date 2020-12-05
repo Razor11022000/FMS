@@ -1,0 +1,45 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+	{% include 'accounts/status.html' %}
+	<br>
+
+	<div class="row">
+		<div class="col-md-5">
+			<h5>STUDENT:</h5>
+			<hr>
+			<div class="card card-body">
+				<a class="btn btn-primary  btn-sm btn-block" href="">New Admission</a>
+				<table class="table table-sm">
+					<tr>
+						<th></th>
+						<th>Student</th>
+						<th>fees</th>
+					</tr>
+
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-7">
+			<h5>LAST 5 PAYMENTS</h5>
+			<hr>
+			<div class="card card-body">
+				<a class="btn btn-primary  btn-sm btn-block" href="">Payment</a>
+				<table class="table table-sm">
+					<tr>
+						<th>year</th>
+						<th>Date of pay</th>
+						<th>Status</th>
+						<th>Update</th>
+						<th>Remove</th>
+					</tr>
+		
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}

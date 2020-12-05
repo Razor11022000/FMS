@@ -1,0 +1,35 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+
+	<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Payment</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>USN</th>
+							<th>Name</th>
+							<th>Fee_Type</th>
+							<th>Total_Amount</th>
+							<th>Amount_Paid</th>
+							<th>mode_of_pay</th>
+							<th>status</th>
+						</tr>
+
+						{% for i in payments %}
+							{{i.fee_id}}
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+
+{% endblock %}
