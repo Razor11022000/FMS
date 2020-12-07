@@ -5,28 +5,73 @@
 <br>
 
 <div class="row">
-  <div class="col mb-4">
+  <div class="col-md">
     <div class="card h-100">
-      <div class="card-header text-center"><h5>Students</h5></div>
+      <div class="card-header text-center"><h5>Student</h5></div>
       <div class="card-body">
-        <h5 class="card-title text-center">1</h5>
+        <div class="pb-2"><a class="btn-sm btn-outline-success btn-block text-center" href="#">Update Student</a></div>
+        <div><a class="btn-sm btn-outline-danger btn-block text-center" href="#">Delete Student</a></div>
       </div>
     </div>
   </div>
-  <div class="col mb-4">
+  <div class="col-md">
     <div class="card h-100">
-      <div class="card-header text-center"><h5>Application</h5></div>
+      <div class="card-header text-center"><h5>Contact Info</h5></div>
       <div class="card-body">
-        <h5 class="card-title text-center">2</h5>
+        <div>Email: {{student.email}}</div>
+        <div>Phone: {{student.phone}}</div>
       </div>
     </div>
   </div>
-  <div class="col mb-4">
+  <div class="col-md">
     <div class="card h-100">
-      <div class="card-header text-center"><h5>Payment</h5></div>
+      <div class="card-header text-center"><h5>Pending Fees</h5></div>
       <div class="card-body">
-        <h5 class="card-title text-center">3</h5>
+        <h5 class="card-title text-center">{{payment_count}}</h5>
       </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col">
+    <div class="card card-body">
+      <form method="get">
+
+        <button class="btn btn-primary" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md">
+    <div class="card card-body">
+      <table class="table table-sm">
+        <tr>
+          <th>Fee Name</th>
+          <th>Type</th>
+          <th>Date Payment</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Remove</th>
+        </tr>
+
+        {% for payment in payments %}
+
+        <tr>
+          <td class="font-weight-normal">{{payment.fee.name}}</td>
+          <td class="font-weight-normal">{{payment.fee.category}}</td>
+          <td class="font-weight-normal">{{payment.date_created}}</td>
+          <td class="font-weight-normal">{{payment.status}}</td>
+          <td class="font-weight-normal"><a class="btn btn-sm btn-info" href="{% url 'update_payment' payment.id %}">Edit</a></td>
+          <td class="font-weight-normal"><a class="btn btn-sm btn-danger" href="{% url 'delete_payment' payment.id %}">Remove</a></td>
+        </tr>
+        {% endfor %}
+
+      </table>
     </div>
   </div>
 </div>

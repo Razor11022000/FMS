@@ -1,11 +1,15 @@
+body{
+	background-color: #ebeff5;
+}
+
 #total-students{
-		background: #19bd96;
-	}
+	background:#19bd96;
+}
 
 #students-paid{
-		background: #2fa5d4;
-	}
+	background:#2fa5d4;
+}
 
-#pay-pending{
-		background: #fabc02;
-	}
+#left-over{
+	background:#e8b0ce;
+}

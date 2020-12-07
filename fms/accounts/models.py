@@ -214,8 +214,8 @@ class Payment(models.Model):
 
 	STATUS = (
 		('Pending', 'Pending'),
-		('Payment recieved', 'recieved'),
-		('Payment ack', 'Payment ack'),
+		('Recieved', 'Recieved'),
+		('Acknowledged', 'Acknowledged'),
 		)
 	MODE_OF_PAYMENT = (
 		('NEFT','NEFT'),
@@ -231,6 +231,6 @@ class Payment(models.Model):
 	status = models.CharField(max_length=200, null=True, choices=STATUS)
 
 	def __str__(self):
-		return str(self.student)
+		return str(self.fee)
 
 
