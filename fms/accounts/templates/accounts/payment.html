@@ -7,7 +7,9 @@
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Payment</h5>
+					<h5>Payment
+						<span class="pl-1"><a class="btn-sm btn-primary" href="" title="">+ Add Payment</a></span>
+					</h5>
 				</div>
 				<div class="card card-body">
 					<table class="table">
@@ -15,14 +17,28 @@
 							<th>USN</th>
 							<th>Name</th>
 							<th>Fee_Type</th>
-							<th>Total_Amount</th>
 							<th>Amount_Paid</th>
 							<th>mode_of_pay</th>
 							<th>status</th>
+							<th>Action</th>
 						</tr>
 
 						{% for i in payments %}
-							{{i.fee_id}}
+							<tr>
+								<td>{{i.id}}</td>
+								<td>{{i.student.name}}</td>
+								<td>{{i.fee.name}}</td>
+								<td>{{i.amount_paid}}</td>
+								<td>{{i.mode_payment}}</td>
+								<td>{{i.status}}</td>
+								<td><a class="btn-sm btn-success" href="">
+									<i class="far fa-edit"></i> Edit</a>
+									<span class="pl-2"><a class="btn-sm btn-danger" href="#">
+  										<i class="far fa-trash-alt"></i> Delete</a>
+  									</span>
+  								</td>
+							</tr>
+						
 						{% endfor %}
 
 					</table>
