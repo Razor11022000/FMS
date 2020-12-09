@@ -33,12 +33,28 @@ def student(request, pk):
 def payment(request):
 	payments = Payment.objects.all()
 
-	return render(request, 'accounts/payment.html', {'payments':payments} )
+	context = {'payments':payments}
+
+	return render(request, 'accounts/payment.html', context)
 
 
-def createPayment(request):
+def addPayment(request):
 
 	form = PaymentForm()
+	if request.method == "POST":
+		form = PaymentForm(request.POST)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+
+	context = {'form':form}
+	return render(request, 'accounts/payment_form.html', context)
+
+
+def createPayment(request, pk):
+
+	student = Student.objects.get(id=pk)
+	form = PaymentForm(initial={'student':student})
 
 	if (request.method == 'POST'):
 		form = PaymentForm(request.POST)

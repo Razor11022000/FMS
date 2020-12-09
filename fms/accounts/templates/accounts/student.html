@@ -7,10 +7,10 @@
 <div class="row">
   <div class="col-md">
     <div class="card h-100">
-      <div class="card-header text-center"><h5>Student</h5></div>
+      <div class="card-header text-center"><h5>Student: {{student.name}}</h5></div>
       <div class="card-body">
         <div class="pb-2"><a class="btn-sm btn-outline-success btn-block text-center" href="#">Update Student</a></div>
-        <div><a class="btn-sm btn-outline-danger btn-block text-center" href="#">Delete Student</a></div>
+        <div><a class="btn-sm btn-outline-info btn-block text-center" href="{% url 'create_payment' student.id %}">Add Payment</a></div>
       </div>
     </div>
   </div>

@@ -101,6 +101,7 @@ class Student(models.Model):
 		)
 
 	name = models.CharField(max_length=200, null=True)
+	usn = models.CharField(max_length=200, unique=True)
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
 	ad_date = models.DateField()

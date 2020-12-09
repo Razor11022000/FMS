@@ -11,23 +11,32 @@
 
 <link rel="stylesheet" type="text/css" href="{% static '/css/status.css' %}">
 
+<link rel="stylesheet" type="text/css" href="{% static '/css/footer.css' %}">
+
 <!-- Font Awesome JS -->
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 
 </head>
 <body>
-
+ 
 	{% include 'accounts/navbar.html' %}
-
-	<div class="container-fluid" id="main">
+	
+	<div class="content">
+		<div class="container-fluid" id="main">
 		
-		{% block content %}
+			{% block content %}
 	
 
 
-		{% endblock %}
+			{% endblock %}
 
+		</div>
 	</div>
+
+	<footer class="footer">
+		<div class="pt-2">2020 @bmsit</div>
+	</footer>
+	
 </body>
 
 <!-- jQuery and JS bundle w/ Popper.js -->
