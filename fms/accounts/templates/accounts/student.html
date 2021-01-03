@@ -5,26 +5,35 @@
 <br>
 
 <div class="row">
-  <div class="col-md">
-    <div class="card h-100">
-      <div class="card-header text-center"><h5>Student: {{student.name}}</h5></div>
-      <div class="card-body">
-        <div class="pb-2"><a class="btn-sm btn-outline-success btn-block text-center" href="#">Update Student</a></div>
-        <div><a class="btn-sm btn-outline-info btn-block text-center" href="{% url 'create_payment' student.id %}">Add Payment</a></div>
+  <div class="col-md-6">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{student.profile_pic.url}}" class="rounded-circle mx-auto d-block mt-5" width="150px" height="150px">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5>Contact Info:</h5>
+            <div class="card-body">
+              <div>Name: {{student.name}}</div>
+              <div>Email: {{student.email}}</div>
+              <div>Phone: {{student.phone}}</div>
+            </div>
+            <div>
+              <a class="btn-sm btn-outline-success text-center" href="{% url 'update_student' student.id %}">Update Student</a>
+              <a class="btn-sm btn-outline-info text-center" href="{% url 'create_payment' student.id %}">Add Payment</a>
+              <a class="btn-sm btn-outline-warning text-center" href="{% url 'create_payment' student.id %}">Generate TC</a>
+            </div>
+
+            <p class="card-text mt-2"><small class="text-muted">- Last updated 3 mins ago</small></p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md">
-    <div class="card h-100">
-      <div class="card-header text-center"><h5>Contact Info</h5></div>
-      <div class="card-body">
-        <div>Email: {{student.email}}</div>
-        <div>Phone: {{student.phone}}</div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md">
-    <div class="card h-100">
+</div>
+
+  <div class="col-md-3">
+    <div class="card">
       <div class="card-header text-center"><h5>Pending Fees</h5></div>
       <div class="card-body">
         <h5 class="card-title text-center">{{payment_count}}</h5>
@@ -37,10 +46,13 @@
 <div class="row">
   <div class="col">
     <div class="card card-body">
+
       <form method="get">
+          {{myFilter.form}}
 
         <button class="btn btn-primary" type="submit">Search</button>
       </form>
+
     </div>
   </div>
 </div>
@@ -50,10 +62,11 @@
   <div class="col-md">
     <div class="card card-body">
       <table class="table table-sm">
-        <tr>
+        <tr class="table-success">
           <th>Fee Name</th>
           <th>Type</th>
-          <th>Date Payment</th>
+          <th>Date of Payment</th>
+          <th>Paid</th>
           <th>Status</th>
           <th>Edit</th>
           <th>Remove</th>
@@ -65,6 +78,7 @@
           <td class="font-weight-normal">{{payment.fee.name}}</td>
           <td class="font-weight-normal">{{payment.fee.category}}</td>
           <td class="font-weight-normal">{{payment.date_created}}</td>
+          <td class="font-weight-normal">{{payment.amount_paid}}</td>
           <td class="font-weight-normal">{{payment.status}}</td>
           <td class="font-weight-normal"><a class="btn btn-sm btn-info" href="{% url 'update_payment' payment.id %}">Edit</a></td>
           <td class="font-weight-normal"><a class="btn btn-sm btn-danger" href="{% url 'delete_payment' payment.id %}">Remove</a></td>

@@ -1,0 +1,54 @@
+{% extends 'accounts/main.html' %}
+
+{% load static %}
+
+	{% block content %}
+
+	<br>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<div class="card" style="border-radius:20px;">
+		  		<div class="card-body">
+		  			<h5 class="card-title">Profile Pic</h5>
+		  			<img class="rounded-circle mx-auto d-block" width="150px" height="150px" src="{{request.user.student.profile_pic.url}}">
+		  			<hr>
+			   		
+			    	<p class="card-text text-center text-capitalize">{{user}}</p>
+			    	<a href="{% url 'userPage' %}" class="btn btn-outline-success">
+			    		<svg xmlns="http://www.w3.org/2000/svg" 
+					    	width="16" 
+					    	height="16" 
+					    	fill="currentColor" 
+					    	class="bi bi-arrow-left-circle" 
+					    	viewBox="0 0 16 16">
+				  			<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+						</svg><span style="padding-top:1px"> Home</span>
+					</a>
+		  		</div>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<div class="card" style="border-radius:20px;">
+		  		<div class="card-body">
+			   		<h5 class="card-title">Profile Settings</h5>
+			    	<p class="card-text">
+			    		<form method="POST" action="" id="profile_update_form" enctype="multipart/form-data">
+			    			{% csrf_token %}
+			    			<div class="fieldWrapper">
+							    {{ form.profile_pic.errors }}
+							    {{ form.profile_pic.label_tag }}
+							    {{ form.profile_pic }}
+							</div>
+
+			    		</form>
+			    		<button  class="btn btn-outline-success" type="submit" form="profile_update_form" value="Submit"><img src="{% static 'images/update_profile.svg' %}" width="19" height="19"> Update
+			    		</button>
+			    	</p>
+			    	<br>
+		  		</div>
+			</div>	
+		</div>
+	</div>
+
+	{% endblock %}

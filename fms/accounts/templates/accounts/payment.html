@@ -6,11 +6,18 @@
 
 		<div class="row">
 			<div class="col-md">
+				<h2>Payment</h2>
+				<br>
+				<div class="pl-1"><a class="btn-sm btn-primary" href="{% url 'add_payment' %}">+ Add Payment</a></div>
+				<br>
 				<div class="card card-body">
-					<h5>Payment
-						<span class="pl-1"><a class="btn-sm btn-primary" href="{% url 'add_payment' %}">+ Add Payment</a></span>
-					</h5>
-				</div>
+					<form method="get">
+          					{{myFilter.form}}
+
+        					<button class="btn btn-primary" type="submit">Search</button>
+     				</form>
+     			</div>
+
 				<div class="card card-body">
 					<table class="table">
 						<thead class="thead-light">
@@ -35,9 +42,9 @@
 								<td>{{i.amount_paid}}</td>
 								<td>{{i.mode_payment}}</td>
 								<td>{{i.status}}</td>
-								<td><a class="btn-sm btn-success" href="">
+								<td><a class="btn-sm btn-success" href="{% url 'update_payment' i.id %}">
 									<i class="far fa-edit"></i> Edit</a>
-									<span class="pl-2"><a class="btn-sm btn-danger" href="#">
+									<span class="pl-2"><a class="btn-sm btn-danger" href="{% url 'delete_payment' i.id %}">
   										<i class="far fa-trash-alt"></i> Delete</a>
   									</span>
   								</td>
@@ -50,6 +57,6 @@
 			</div>
 			
 		</div>
-
+<br>
 
 {% endblock %}

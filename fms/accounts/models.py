@@ -1,5 +1,6 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.
 """
@@ -100,8 +101,9 @@ class Student(models.Model):
 		('DIPLOMA','DIPLOMA'),
 		)
 
+	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200, null=True)
-	usn = models.CharField(max_length=200, unique=True)
+	usn = models.CharField(max_length=200, unique=True, null=True)
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
 	ad_date = models.DateField()
@@ -109,6 +111,7 @@ class Student(models.Model):
 	branch = models.CharField(max_length=50, choices=BRANCH)
 	sem = models.CharField(max_length=5)	
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
+	profile_pic = models.ImageField(default="default_profile_pic.png",null=True)
 	category = models.CharField(max_length=20, choices=CATEGORY1) 
 	ed_level = models.CharField(max_length=20, choices=EDUCATIONAL_LEVEL)
 

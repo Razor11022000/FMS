@@ -1,15 +1,36 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
  <img src="{% static '/images/logo3.jpg' %}" width="50px" height="40px">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Student</a>
-      <a class="nav-item nav-link" href="{% url 'payment' %}">Payment</a>
+
+      {% if request.user.is_staff %}
+
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{% url 'payment' %}">Payment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="{% url 'tc' %}">TC</a>
+        </li>
+
+      {% else %}
+      
+        <li class="nav-item ml-auto ">
+          <a class="nav-link text-dark" href="{% url 'profile' %}">Settings</a>
+        </li>
+
+      {% endif %}
+
     </div>
   </div>
+
+  <span>Hello, {{request.user}} </span>
+  <span><a href="{% url 'logout' %}"> Logout</a></span>
 </nav>

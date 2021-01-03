@@ -1,0 +1,20 @@
+{% extends 'accounts/main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+ 
+	<form action="" method="POST" id="tc_form">
+		{% csrf_token %}
+		<div class="row">
+			<div class="col-6">
+	        	{{ form.name|as_crispy_field }}
+	      	</div>
+	      	<div class="col-6">
+	       		{{ form.usn|as_crispy_field }}
+	      	</div>
+	    </div>
+	</form>
+	<button class="btn btn-outline-success" type="submit" form="tc_form" value="Submit">Confirm</button>
+
+{% endblock %}

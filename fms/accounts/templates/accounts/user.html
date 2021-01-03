@@ -1,0 +1,32 @@
+{% extends 'accounts/main.html' %}
+	{% block content %}
+
+		{% include 'accounts/status.html' %}
+
+		<div class="row">
+		  <div class="col-md">
+		    <div class="card card-body">
+		      <table class="table table-sm">
+		        <tr>
+		          <th>Fee Name</th>
+		          <th>Type</th>
+		          <th>Date Payment</th>
+		          <th>Status</th>
+		        </tr>
+
+		        {% for payment in payments %}
+
+		        <tr>
+		          <td class="font-weight-normal">{{payment.fee.name}}</td>
+		          <td class="font-weight-normal">{{payment.fee.category}}</td>
+		          <td class="font-weight-normal">{{payment.date_created}}</td>
+		          <td class="font-weight-normal">{{payment.status}}</td>
+		        </tr>
+		        {% endfor %}
+
+		      </table>
+		    </div>
+		  </div>
+		</div>
+
+	{% endblock %}
