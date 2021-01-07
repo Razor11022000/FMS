@@ -111,7 +111,7 @@ class Student(models.Model):
 	branch = models.CharField(max_length=50, choices=BRANCH)
 	sem = models.CharField(max_length=5)	
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
-	profile_pic = models.ImageField(default="default_profile_pic.png",null=True)
+	profile_pic = models.ImageField(default="default_profile_pic.png")
 	category = models.CharField(max_length=20, choices=CATEGORY1) 
 	ed_level = models.CharField(max_length=20, choices=EDUCATIONAL_LEVEL)
 

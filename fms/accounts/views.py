@@ -235,6 +235,12 @@ def tc(request):
 		
 		if form.is_valid():
 			form.save()
-			
+			redirect('accounts/tc.html')
+
 	context = {'form':form, 'student':student}
 	return render(request, 'accounts/tc.html', context)
+
+
+def newDashboard(request):
+	context = {}
+	return render(request,'accounts/newDashboard.html',context)

@@ -7,13 +7,32 @@
 	<form action="" method="POST" id="tc_form">
 		{% csrf_token %}
 		<div class="row">
-			<div class="col-6">
-	        	{{ form.name|as_crispy_field }}
-	      	</div>
-	      	<div class="col-6">
-	       		{{ form.usn|as_crispy_field }}
-	      	</div>
-	    </div>
+      		<div class="col-4">
+        		{{ form.name|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		{{ form.usn|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		
+      		</div>
+      		<div class="col-4">
+        		{{ form.batch|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		{{ form.branch|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		{{ form.sem|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		{{ form.category|as_crispy_field }}
+      		</div>
+      		<div class="col-4">
+        		{{ form.ed_level|as_crispy_field }}
+      		</div>
+    	</div>
+    	
 	</form>
 	<button class="btn btn-outline-success" type="submit" form="tc_form" value="Submit">Confirm</button>
 

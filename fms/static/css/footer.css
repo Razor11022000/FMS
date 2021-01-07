@@ -1,16 +1,9 @@
-html, body {
-  height: 100%;
+.contaner {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
 }
-body {
-  display: flex;
-  flex-direction: column;
-}
-.content {
-  flex: 1 0 auto;
-}
+
 .footer {
-  flex-shrink: 0;
-  height: 40px;
-  background-color: #b2cfcd;
-  text-align: center;
+  background-color: #f5f5f5;
 }

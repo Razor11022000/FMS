@@ -20,4 +20,5 @@ urlpatterns = [
     path('delete_payment/<str:pk>/', views.deletePayment, name = 'delete_payment'),
 
     path('tc-form/',views.tc, name = 'tc'),
+    path('newDashboard/',views.newDashboard, name = 'newDashboard'),
 ]
