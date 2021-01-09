@@ -4,8 +4,7 @@
 
 	<br>
 
-		<div class="row">
-			<div class="col-md">
+			<div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<h2>Payment</h2>
 				<br>
 				<div class="pl-1"><a class="btn-sm btn-primary" href="{% url 'add_payment' %}">+ Add Payment</a></div>
@@ -19,7 +18,7 @@
      			</div>
 
 				<div class="card card-body">
-					<table class="table">
+					<table id="myPayment" class="table">
 						<thead class="thead-light">
     						<tr>
 								<th>#</th>
@@ -55,8 +54,6 @@
 					</table>
 				</div>
 			</div>
-			
-		</div>
-<br>
+	<br>
 
 {% endblock %}

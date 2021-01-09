@@ -91,7 +91,7 @@ def home(request):
 	context = {'students':students, 'payments':payments, 'Total_payments':Total_payments,
 	'Payments_recieved':Payments_recieved, 'Payments_pending':Payments_pending}
 
-	return render(request, 'accounts/dashboard.html',context)
+	return render(request, 'accounts/newDashboard.html',context)
 
 
 #--------- view function to render STUDENT.HTML page ----------#
@@ -106,7 +106,7 @@ def student(request, pk):
 
 	context = {'student':student, 'payments':payments, 'payment_count':payment_count}
 
-	return render(request, 'accounts/student.html', context)
+	return render(request, 'accounts/student_info.html', context)
 
 
 #--------- view function to render PROFILE_PAGE.HTML ----------#

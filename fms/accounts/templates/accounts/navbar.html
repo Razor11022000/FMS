@@ -1,36 +1,25 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
- <img src="{% static '/images/logo3.jpg' %}" width="50px" height="40px">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+ <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">FMS</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <span class="ml-auto" style="color:#fff;">welcome , {{request.user}} 
+      {% if request.user.student.gender == "MALE" %}
 
-      {% if request.user.is_staff %}
-
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{% url 'home' %}">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{% url 'payment' %}">Payment</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{% url 'tc' %}">TC</a>
-        </li>
+        <img class="rounded-circle border-light bg-info" src="https://icon-library.net//images/boy-icon-png/boy-icon-png-10.jpg" width="26px" height="26px" /></a>
 
       {% else %}
-      
-        <li class="nav-item ml-auto ">
-          <a class="nav-link text-dark" href="{% url 'profile' %}">Settings</a>
-        </li>
+
+        <img class="rounded-circle border-light bg-warning" src="https://img.pngio.com/social-user-woman-avatar-profile-icon-female-profile-png-512_512.png" width="26px" height="26px">
 
       {% endif %}
-
-    </div>
-  </div>
-
-  <span>Hello, {{request.user}} </span>
-  <span><a href="{% url 'logout' %}"> Logout</a></span>
-</nav>
+    </span>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
+      </li>
+    </ul>
+  </nav>

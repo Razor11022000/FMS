@@ -101,11 +101,18 @@ class Student(models.Model):
 		('DIPLOMA','DIPLOMA'),
 		)
 
+	GENDER = (
+		('MALE','M'),
+		('FEMALE','F'),
+		('OTHER','O')
+		)
+
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200, null=True)
 	usn = models.CharField(max_length=200, unique=True, null=True)
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
+	gender = models.CharField(max_length=10, null=True, choices=GENDER)
 	ad_date = models.DateField()
 	batch = models.CharField(max_length=10)
 	branch = models.CharField(max_length=50, choices=BRANCH)
