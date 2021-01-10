@@ -23,9 +23,6 @@ def Register(request):
 			user = form.save()
 			username = form.cleaned_data.get('username')
 
-			group = Group.objects.get(name='student')
-			user.groups.add(group)
-			Student.objects.create(user = user,)
 
 			messages.success(request, 'Account created ' + username)
 
@@ -235,12 +232,7 @@ def tc(request):
 		
 		if form.is_valid():
 			form.save()
-			redirect('accounts/tc.html')
+			redirect('accounts/tc_form.html')
 
 	context = {'form':form, 'student':student}
-	return render(request, 'accounts/tc.html', context)
-
-
-def newDashboard(request):
-	context = {}
-	return render(request,'accounts/newDashboard.html',context)
+	return render(request, 'accounts/sample_tc.html', context)

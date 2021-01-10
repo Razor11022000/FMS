@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
+
+
 class ProfileForm(ModelForm):
 	class Meta:
 		model = Student
@@ -29,3 +31,4 @@ class TcForm(ModelForm):
 	class Meta:
 		model = Student
 		fields = ['name','usn','ad_date','batch','branch','sem','category','ed_level']
+

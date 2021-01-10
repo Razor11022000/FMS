@@ -35,12 +35,9 @@
 				    	<p class="card-text">
 				    		<form method="POST" action="" id="profile_update_form" enctype="multipart/form-data">
 				    			{% csrf_token %}
-				    			<div class="fieldWrapper">
-								    {{ form.profile_pic.errors }}
-								    {{ form.profile_pic.label_tag }}
-								    {{ form.profile_pic }}
-								</div>
 
+				    			{{form.as_p}}
+				    			
 				    		</form>
 				    		<button  class="btn btn-outline-success" type="submit" form="profile_update_form" value="Submit"><img src="{% static 'images/update_profile.svg' %}" width="19" height="19"> Update
 				    		</button>

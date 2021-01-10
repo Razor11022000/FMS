@@ -113,20 +113,19 @@ class Student(models.Model):
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
 	gender = models.CharField(max_length=10, null=True, choices=GENDER)
-	ad_date = models.DateField()
+	ad_date = models.DateField(null=True, blank=True)
 	batch = models.CharField(max_length=10)
 	branch = models.CharField(max_length=50, choices=BRANCH)
 	sem = models.CharField(max_length=5)	
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
-	profile_pic = models.ImageField(default="default_profile_pic.png")
+	profile_pic = models.ImageField(default="default_profile_pic.png",null=True, blank=True)
 	category = models.CharField(max_length=20, choices=CATEGORY1) 
 	ed_level = models.CharField(max_length=20, choices=EDUCATIONAL_LEVEL)
 
 	def __str__(self):
+		# if self.name==None:
+		# 	return "ERROR-STUDENT NAME IS NULL"
 		return self.name
-
-	#def __str__(self):
-	#	return '%s %s' % (self.student_name, self.batch)
 	
 	
 
@@ -242,6 +241,6 @@ class Payment(models.Model):
 	status = models.CharField(max_length=200, null=True, choices=STATUS)
 
 	def __str__(self):
-		return str(self.fee)
+		return self.student.name
 
 
