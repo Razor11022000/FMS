@@ -50,6 +50,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Student</th>
                 <th>Fee</th>
                 <th>Date of pay</th>
                 <th>Status</th>
@@ -62,8 +63,9 @@
               {% for payment in payments %}
 
               <tr>
-                <th class="font-weight-normal">{{ payment.fee.id }}</th>
-                <th class="font-weight-normal">{{ payment.fee.name }}</th>
+                <th class="font-weight-normal">{{ payment.fee_id.id }}</th>
+                <th class="font-weight-normal">{{ payment.student_id.name }}</th>
+                <th class="font-weight-normal">{{ payment.fee_id.name }}</th>
                 <th class="font-weight-normal">{{ payment.date_created }}</th>
                 <th class="font-weight-normal">{{ payment.status }}</th>
                 <th>

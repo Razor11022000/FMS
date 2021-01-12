@@ -25,6 +25,7 @@
 								<th>USN</th>
 								<th>Name</th>
 								<th>Fee_Type</th>
+								<th>Amount</th>
 								<th>Amount_Paid</th>
 								<th>mode_of_pay</th>
 								<th>status</th>
@@ -35,9 +36,10 @@
 						{% for i in payments %}
 							<tr>
 								<td>{{i.id}}</td>
-								<td>{{i.student.usn}}</td>
-								<td>{{i.student.name}}</td>
-								<td>{{i.fee.name}}</td>
+								<td>{{i.student_id.usn}}</td>
+								<td>{{i.student_id.name}}</td>
+								<td>{{i.fee_id.name}}</td>
+								<td>{{i.fee_id.amount}}</td>
 								<td>{{i.amount_paid}}</td>
 								<td>{{i.mode_payment}}</td>
 								<td>{{i.status}}</td>

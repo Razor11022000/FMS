@@ -10,7 +10,7 @@
     <div class="card">
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="{{student.profile_pic.url}}" class="rounded-circle mx-auto d-block mt-5" width="150px" height="150px">
+          <img src="{{request.student.profile_pic}}" class="rounded-circle mx-auto d-block mt-5" width="150px" height="150px">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -26,7 +26,7 @@
                 <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'create_tc' student.id %}">Generate TC</a>
               </div>
 
-              <p class="card-text mt-2"><small class="text-muted">- Last updated 3 mins ago</small></p>
+              <p class="card-text mt-2"><small class="text-muted">- Last updated {{student.updated_at}} </small></p>
           </div>
         </div>
       </div>
@@ -68,6 +68,7 @@
               <th>Fee Name</th>
               <th>Type</th>
               <th>Date of Payment</th>
+              <th>Amount</th>
               <th>Paid</th>
               <th>Status</th>
               <th>Edit</th>
@@ -79,9 +80,10 @@
           {% for payment in payments %}
 
             <tr>
-              <td class="font-weight-normal">{{payment.fee.name}}</td>
-              <td class="font-weight-normal">{{payment.fee.category}}</td>
+              <td class="font-weight-normal">{{payment.fee_id.name}}</td>
+              <td class="font-weight-normal">{{payment.fee_id.category}}</td>
               <td class="font-weight-normal">{{payment.date_created}}</td>
+              <td class="font-weight-normal">{{payment.fee_id.amount}}</td>
               <td class="font-weight-normal">{{payment.amount_paid}}</td>
               <td class="font-weight-normal">{{payment.status}}</td>
               <td class="font-weight-normal"><a class="btn btn-sm btn-info" href="{% url 'update_payment' payment.id %}">Edit</a></td>
