@@ -54,9 +54,9 @@
                     </div>
                     <div class="col-md-8">
                         <div class="content text-center">
-                            <h3>@OrganisationName</h3>
-                            <h4>@BranchName</h4>
-                            <p>Affliation No here</p>
+                            <h3>BMSIT</h3>
+                            <h4>{{tc.student_id.branch}}</h4>
+                            <p>VTU</p>
                             <p class="text-muted">School Address</p>
                         </div>
                     </div>
@@ -67,12 +67,12 @@
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
-                            <th class="algnright">Tc No.</th>
-                            <td>@CertificateNo</td>
-                            <th class="algnright">Admission No.</th>
-                            <td>@admissionNo</td>
-                            <th class="algnright">Date</th>
-                            <td>@date</td>
+                            <th class="algnright">Tc No:</th>
+                            <td>{{tc.id}}</td>
+                            <th class="algnright">Admission No:</th>
+                            <td>{{tc.student_id.usn}}</td>
+                            <th class="algnright">Date:</th>
+                            <td>{{tc.created_at}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -81,89 +81,70 @@
                     <tbody>
                         <tr>
                             <td class="tableDataWidth">1. Name of Pupil</td>
-                            <td class="tableDataWidth">@name</td>
+                            <td class="tableDataWidth">{{tc.student_id.name}}</td>
                         </tr>
                         <tr>
                             <td>2. Father's/Mother's/Guardian's Name</td>
-                            <td>@FatherName</td>
+                            <td>{{tc.student_id.father_name}}</td>
                         </tr>
                         <tr>
                             <td>3. Nationality</td>
-                            <td>@Nationality</td>
+                            <td>{{tc.student_id.nationality}}</td>
                         </tr>
                         <tr>
-                            <td>4. Whether the Pupil belong to SC or ST</td>
-                            <td>----</td>
+                            <td>4. Category</td>
+                            <td>{{tc.student_id.category}}</td>
                         </tr>
                         <tr>
-                            <td>5. Date of First Admissin in the School with Class</td>
-                            <td>----</td>
+                            <td>5. Date of First Admission in the college with year</td>
+                            <td>{{tc.student_id.ad_date}}</td>
                         </tr>
                         <tr>
                             <td>6. Date of Birth according to Admission Register</td>
-                            <td>----</td>
+                            <td>{{tc.student_id.dob}}</td>
                         </tr>
                         <tr>
-                            <td>7. Class in which the pupil last studied</td>
-                            <td>----</td>
+                            <td>7. Sem in which the pupil last studied</td>
+                            <td>{{tc.student_id.sem}}</td>
                         </tr>
                         <tr>
                             <td>8. Annual examination last taken with result</td>
+                            <td>{{tc.student_id.sem}} / {{tc.student_id.cgpa}}</td>
+                        </tr>
+                        <tr>
+                            <td>9. Whether qualified for promotion to the higher class if so, to which class</td>
                             <td>----</td>
                         </tr>
                         <tr>
-                            <td>9. Subjects studied</td>
-                            <td>
-                                <table class="table table-borderless">
-                                    <tbody>
-                                        <tr>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10. Whether qualified for promotion to the higher class if so, to which class</td>
+                            <td>10. Month up to which the pupil has paid school dues</td>
                             <td>----</td>
                         </tr>
                         <tr>
-                            <td>11. Month up to which the pupil has paid school dues</td>
+                            <td>11. Total No. of Working Days</td>
+                            <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>12. Attendence </td>
+                            <td>{{tc.student_id.attendence}}</td>
+                        </tr>
+                        <tr>
+                            <td>13. General Conduct</td>
                             <td>----</td>
                         </tr>
                         <tr>
-                            <td>12. Total No. of Working Days</td>
+                            <td>14. Date of Application for Certificate</td>
                             <td>----</td>
                         </tr>
                         <tr>
-                            <td>13. Total No. of Working Days Present</td>
+                            <td>15. Date of Issue of Certificate</td>
+                            <td>{{tc.updated_at}}</td>
+                        </tr>
+                        <tr>
+                            <td>16. Reasons for leaving the School</td>
                             <td>----</td>
                         </tr>
                         <tr>
-                            <td>14. General Conduct</td>
-                            <td>----</td>
-                        </tr>
-                        <tr>
-                            <td>15. Date of Application for Certificate</td>
-                            <td>----</td>
-                        </tr>
-                        <tr>
-                            <td>16. Date of Issue of Certificate</td>
-                            <td>----</td>
-                        </tr>
-                        <tr>
-                            <td>17. Reasons for leaving the School</td>
-                            <td>----</td>
-                        </tr>
-                        <tr>
-                            <td>18. Any other Remarks</td>
+                            <td>17. Any other Remarks</td>
                             <td>----</td>
                         </tr>
                     </tbody>
@@ -181,10 +162,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="m-5 algnright">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
 </body>

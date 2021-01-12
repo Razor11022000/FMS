@@ -3,10 +3,11 @@
 {% load static %}
 
 {% block content %}
+<br>
 <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 	<form action="" method="POST">
 		{% csrf_token %}
-		{{form}}
+		{{form.as_p}}
 
 		<input type="submit" name="Submit">
 	</form>

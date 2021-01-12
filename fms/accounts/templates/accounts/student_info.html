@@ -23,7 +23,7 @@
               <div>
                 <a class="btn-sm btn-outline-success text-center" style="text-decoration:none;" href="{% url 'update_student' student.id %}">Update Student</a>
                 <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'create_payment' student.id %}">Add Payment</a>
-                <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'tc' %}">Generate TC</a>
+                <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'create_tc' student.id %}">Generate TC</a>
               </div>
 
               <p class="card-text mt-2"><small class="text-muted">- Last updated 3 mins ago</small></p>

@@ -20,7 +20,8 @@ urlpatterns = [
     path('update_payment/<str:pk>/', views.updatePayment, name = 'update_payment'),
     path('delete_payment/<str:pk>/', views.deletePayment, name = 'delete_payment'),
 
-    path('tc-form/',views.tc, name = 'tc'),
+
+    path('tc-form/<str:pk>/',views.createTc, name = 'create_tc'),
     path('newDashboard/',views.home, name = 'newDashboard'),
 
 

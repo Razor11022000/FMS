@@ -224,15 +224,9 @@ def updateStudent(request, pk):
 
 @login_required(login_url='login')
 @allowed_users(allowed_roles=['admin'])
-def tc(request):
+def createTc(request, pk):
 
-	student = Student.objects.all()
-	form = TcForm(request.POST)
-	if request.method == 'POST':
-		
-		if form.is_valid():
-			form.save()
-			redirect('accounts/tc_form.html')
+	tc = Tc.objects.get(student_id=pk)
 
-	context = {'form':form, 'student':student}
+	context = {'student':student,'tc':tc}
 	return render(request, 'accounts/sample_tc.html', context)

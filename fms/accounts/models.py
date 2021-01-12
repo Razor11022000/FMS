@@ -74,7 +74,7 @@ class Tuition_Fee(models.Model):
 	category = 
 	amount = 
 
-"""
+"""	
 class Student(models.Model):
 
 	BRANCH = (
@@ -112,15 +112,21 @@ class Student(models.Model):
 	usn = models.CharField(max_length=200, unique=True, null=True)
 	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
+	father_name = models.CharField(max_length=50, null=True, blank=True)
+	dob = models.DateField(null=True,blank=True)
+	nationality = models.CharField(max_length=20, null=True, blank=True)
 	gender = models.CharField(max_length=10, null=True, choices=GENDER)
 	ad_date = models.DateField(null=True, blank=True)
 	batch = models.CharField(max_length=10)
 	branch = models.CharField(max_length=50, choices=BRANCH)
-	sem = models.CharField(max_length=5)	
-	date_created = models.DateTimeField(auto_now_add=True, null=True)
+	sem = models.CharField(max_length=5)		
 	profile_pic = models.ImageField(default="default_profile_pic.png",null=True, blank=True)
 	category = models.CharField(max_length=20, choices=CATEGORY1) 
 	ed_level = models.CharField(max_length=20, choices=EDUCATIONAL_LEVEL)
+	attendence = models.IntegerField(null=True, blank=True)
+	cgpa = models.FloatField(null=True, blank=True)
+	created_at = models.DateTimeField(auto_now_add=True, null=True)
+	updated_at = models.DateTimeField(auto_now=True, null=True)
 
 	def __str__(self):
 		# if self.name==None:
@@ -196,10 +202,10 @@ class Fee(models.Model):
 		('University_Fee','University_Fee'),
 		)
 
-	name = models.CharField(max_length=200, null=True)
-	amount = models.FloatField(null=True)
+	name = models.CharField(max_length=200, null=True)	
 	category = models.CharField(max_length=200, null=True, choices=CATEGORY)
 	description = models.CharField(max_length=200, null=True, blank=True)
+	amount = models.FloatField(null=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 	tags = models.ManyToManyField(Tag)
 
@@ -216,10 +222,7 @@ class Fee(models.Model):
 	ayear = models.DateField()
 
 	"""
-
 	
-
-
 class Payment(models.Model):
 
 	STATUS = (
@@ -233,8 +236,8 @@ class Payment(models.Model):
 		('NETBANKING','NETBANKING'),
 		('CASH','CASH'),
 		)
-	student = models.ForeignKey(Student, null=True, on_delete= models.SET_NULL)
-	fee = models.ForeignKey(Fee, null=True, on_delete= models.SET_NULL)
+	student_id = models.ForeignKey(Student, null=True, on_delete=models.SET_NULL)
+	fee_id = models.ForeignKey(Fee, null=True, on_delete= models.SET_NULL)
 	amount_paid = models.FloatField()
 	mode_payment = models.CharField(max_length=25, choices=MODE_OF_PAYMENT)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
@@ -243,4 +246,10 @@ class Payment(models.Model):
 	def __str__(self):
 		return self.student.name
 
+class Tc(models.Model):
+	student_id = models.OneToOneField(Student, null=True, on_delete=models.CASCADE)
+	created_at = models.DateField(auto_now_add=True, null=True)
+	updated_at = models.DateField(auto_now=True, null=True)
 
+	def __str__(self):
+		return self.student_id.name

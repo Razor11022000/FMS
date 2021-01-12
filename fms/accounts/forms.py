@@ -25,10 +25,10 @@ class CreateUserForm(UserCreationForm):
 class UpdateStudentForm(ModelForm):
 	class Meta:
 		model = Student
-		fields = '__all__'
+		fields = ['name','usn','phone','email','father_name','dob','nationality','gender','ad_date','batch','branch','profile_pic','category','attendence','cgpa']
 
 class TcForm(ModelForm):
 	class Meta:
 		model = Student
-		fields = ['name','usn','ad_date','batch','branch','sem','category','ed_level']
+		fields = '__all__'
 
