@@ -11,7 +11,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 from .decorators import unauthenticated_user, allowed_users, admin_only
-
+from django.http import JsonResponse
 # Create your views here.
 @unauthenticated_user
 def Register(request):
@@ -77,18 +77,26 @@ def userPage(request):
 @login_required(login_url='login')
 @admin_only
 def home(request):
+	paymentdata = []
 
 	students = Student.objects.all()
 	payments = Payment.objects.all()
-
-	Total_payments = payments.count()
-	Payments_recieved = payments.filter(status='Recieved').count()
-	Payments_pending = payments.filter(status='Pending').count()
-
-	context = {'students':students, 'payments':payments, 'Total_payments':Total_payments,
-	'Payments_recieved':Payments_recieved, 'Payments_pending':Payments_pending}
-
+	context = {'students':students, 'payments':payments}
 	return render(request, 'accounts/newDashboard.html',context)
+
+
+@login_required(login_url='login')
+@admin_only
+def chart(request):
+
+	payments = Payment.objects.all()
+	payment_r = payments.filter(status='Recieved').count()
+	payment_p = payments.filter(status='Pending').count()
+	payment_a = payments.filter(status='Acknowledged').count()
+	paymentdata = [{"Recieved":payment_r},{"Pending":payment_p},{"Acknowledged":payment_a}]
+
+	print(paymentdata)
+	return JsonResponse(paymentdata, safe=False)
 
 
 #--------- view function to render STUDENT.HTML page ----------#

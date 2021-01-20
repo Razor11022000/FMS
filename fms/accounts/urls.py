@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('tc-form/<str:pk>/',views.createTc, name = 'create_tc'),
     path('newDashboard/',views.home, name = 'newDashboard'),
-
+    path('chart/',views.chart),
 
 
     path('reset_password/',
