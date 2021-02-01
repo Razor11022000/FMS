@@ -25,6 +25,7 @@ urlpatterns = [
     path('newDashboard/',views.home, name = 'newDashboard'),
     path('chart/',views.chart),
 
+    path('about/',views.aboutPage, name = 'about'),
 
     path('reset_password/',
      auth_views.PasswordResetView.as_view(template_name="accounts/password_reset.html"),

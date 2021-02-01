@@ -6,7 +6,7 @@
 <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
   <br>
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-9">
     <div class="card">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -14,19 +14,19 @@
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5>Contact Info:</h5>
+            <h4 class="text-secondary">Contact Info:</h4>
               <div class="card-body">
-                <div>Name: {{student.name}}</div>
-                <div>Email: {{student.email}}</div>
-                <div>Phone: {{student.phone}}</div>
+                <h6>👦 {{student.name}}</h6>
+                <h6>✉ {{student.email}}</h6>
+                <h6>📞 {{student.phone}}</h6>
               </div>
               <div>
                 <a class="btn-sm btn-outline-success text-center" style="text-decoration:none;" href="{% url 'update_student' student.id %}">Update Student</a>
                 <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'create_payment' student.id %}">Add Payment</a>
-                <a class="btn-sm btn-outline-info text-center" style="text-decoration:none;" href="{% url 'create_tc' student.id %}">Generate TC</a>
+                <a class="btn-sm btn-outline-secondary text-center" style="text-decoration:none;" href="{% url 'create_tc' student.id %}">Generate TC</a>
               </div>
 
-              <p class="card-text mt-2"><small class="text-muted">- Last updated {{student.updated_at}} </small></p>
+              <p class="card-text mt-2"><small class="text-muted">- Last updated {{student.updated_at|timesince}} </small></p>
           </div>
         </div>
       </div>
@@ -43,20 +43,6 @@
     </div>
   </div>
 
-  <br>
-  <div class="row">
-    <div class="col">
-      <div class="card card-body">
-
-        <form method="get">
-            {{myFilter.form}}
-
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
-
-      </div>
-    </div>
-  </div>
   <br>
 
   <div class="row">

@@ -85,6 +85,10 @@ def home(request):
 	return render(request, 'accounts/newDashboard.html',context)
 
 
+def aboutPage(request):
+	return render(request, 'accounts/about.html')
+
+
 @login_required(login_url='login')
 @admin_only
 def chart(request):
@@ -191,7 +195,7 @@ def updatePayment(request, pk):
 		form = PaymentForm(request.POST, instance=payment)
 		if form.is_valid():
 			form.save()
-			return redirect('/')
+			return redirect('payment')
 
 	context = {'form':form}
 

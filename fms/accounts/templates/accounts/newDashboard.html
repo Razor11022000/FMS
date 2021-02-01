@@ -2,16 +2,13 @@
 {% load static %}
 {% block content %}
 
-      <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">Dashboard</h1>
         </div>
         <div class="row">
-        <div class="col-md-4">
+          <div class="col-md-4">
             <h5>STUDENT:</h5>
             <hr>
             <div class="card card-body">
@@ -44,106 +41,13 @@
                 {% endfor %}
               </table>
             </div>
-        </div>  
-        <div class="col-md-8">
-          <style type="text/css">
-            @import 'https://fonts.googleapis.com/css?family=Open+Sans';
-
-            html,body {
-              width:100%;
-              height:100%;
-            }
-            #myChart {
-              width:500px;
-              height:350px;
-            }
-            .zc-ref {
-              display: none;
-            }
-          </style>
-
-          <div id='myChart'></div>
-
-          <script>
-            var state = {
-              'items':[],
-              'values':[],
-            }
-
-            var dataURL = '/'
-            $.ajax({
-              method:'GET',
-              url:dataURL,
-              success:function(response){
-                console.log('RESPONSE:', response)
-                for (var i in response){
-
-                  var key = Object.keys(response[i])[0]
-                  var value = Object.values(response[i])[0]
-
-                  state.items.push(key)
-                  state.values.push(value)
-                }
-                buildChart()
-              }
-            })
-
-            function buildChart(){
-              var myConfig = {
-              type: "pie", 
-              plot: {
-                borderColor: "#2B313B",
-                borderWidth: 5,
-                // slice: 90,
-                valueBox: {
-                  placement: 'out',
-                  text: '%t\n%npv%',
-                  fontFamily: "Open Sans"
-                },
-                tooltip:{
-                  fontSize: '18',
-                  fontFamily: "Open Sans",
-                  padding: "5 10",
-                  text: "%npv%"
-                },
-                animation:{
-                  effect: 'ANIMATION_EXPAND_VERTICAL', 
-                  method: 'ANIMATION_REGULAR_EASE_OUT',
-                  speed: 500,
-                  sequence: 'ANIMATION_BY_PLOT',
-                }
-              },
-              plotarea: {
-                margin: "20 0 0 0"  
-              },
-              series : [
-                {
-                  values : state.values,
-                  text: state.items,
-                  backgroundColor: '#50ADF5',
-                }
-              ]
-            };
-
-            zingchart.render({ 
-              id : 'myChart', 
-              data : myConfig, 
-              height: '100%', 
-              width: '100%' 
-            });
-
-          }
-
-            
-          </script>
+          </div>  
         </div>
-   
-      </div>
-           <br><br>
+        <br><br>
         <h2>Recent Payments</h2>
         <br>
         <div class="table-responsive">
-          <table id="example" class="table table-striped table-sm">
+          <table class="table table-striped table-sm text-center">
             <thead>
               <tr>
                 <th>#</th>
@@ -160,27 +64,27 @@
               {% for payment in payments %}
 
               <tr>
-                <th class="font-weight-normal">{{ payment.fee_id.id }}</th>
-                <th class="font-weight-normal">{{ payment.student_id.name }}</th>
-                <th class="font-weight-normal">{{ payment.fee_id.name }}</th>
-                <th class="font-weight-normal">{{ payment.date_created }}</th>
-                <th class="font-weight-normal">{{ payment.status }}</th>
-                <th>
+                <td>{{ payment.fee_id.id }}</td>
+                <td>{{ payment.student_id.name }}</td>
+                <td>{{ payment.fee_id.name }}</td>
+                <td>{{ payment.date_created }}</td>
+                <td>{{ payment.status }}</td>
+                <td>
                     <a href="{% url 'update_payment' payment.id %}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                       </a>
                     </svg>
-                </th>
-                <th>
+                </td>
+                <td>
                     <a class="align-" href="{% url 'delete_payment' payment.id %}">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
                       </a>
                       </svg>
-                </th>
+                </td>
               </tr>
 
               {% endfor %}
