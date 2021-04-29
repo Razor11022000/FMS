@@ -1,1 +1,1 @@
-# dbms_miniproject
+# computerized Fee payment and TC generation system
