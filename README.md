@@ -122,4 +122,4 @@ Then Add Email, Username and Password
 
 ## For Sponsor or Projects Enquiry
 1. Email - mithungfeb2@gmail.com
-2. LinkedIn - https://www.linkedin.com/in/mithun-g-1397731b0
+2. LinkedIn - https://www.linkedin.com/in/MithunG11
